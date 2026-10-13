@@ -356,6 +356,58 @@ html{scroll-behavior:smooth}body{margin:0;background:#f6f3ed;color:#15231d;overf
 .v-product-zoom{display:none;position:fixed;inset:0;z-index:410;background:rgba(2,10,7,.96);padding:55px 20px 20px;align-items:center;justify-content:center;cursor:zoom-out}.v-product-zoom.on{display:flex}.v-product-zoom img{max-width:100%;max-height:100%;object-fit:contain}.v-zoom-close{position:absolute;right:16px;top:12px;font-size:34px;color:white;border:0;background:transparent;cursor:pointer}
 .v-address-book{border:1px solid #dce5db;background:#f8faf6;border-radius:15px;padding:15px;margin:0 0 20px}.v-address-book-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.v-address-book-head h5{font:700 15px var(--sans);margin:0}.v-address-book-head span{font-size:10px;color:#668074}.v-address-hint{font-size:12px;color:#64776d;margin:12px 0 0}.v-address-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}.v-saved-address{display:flex;flex-direction:column;gap:5px;border:1px solid #dce2dc;border-radius:12px;padding:12px;background:white;text-align:left;color:#1d3427;font-size:11px;line-height:1.5;cursor:pointer}.v-saved-address.selected{border-color:#0f5a3b;box-shadow:0 0 0 2px #d6e9df}.v-address-top{display:flex;align-items:center;justify-content:space-between}.v-address-top b{font-size:12px}.v-address-default{background:#e2f2e6;color:#195d34;padding:2px 6px;border-radius:99px;font-size:10px}.v-saved-address strong{font-size:12px}.v-address-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.v-address-controls button{background:white;color:#0f4d32;border:1px solid #cbdcd0;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer}.v-address-default-choice{grid-column:1/-1;font:600 12px var(--sans);display:flex;align-items:center;gap:10px;color:var(--ink)}.v-address-default-choice input{width:18px!important;height:18px;margin:0}.v-address-error{color:#9d302a;font-size:12px;margin:10px 0}
 @media(max-width:750px){.v-preview-overlay{padding:0}.v-preview-dialog{max-height:100dvh;height:100dvh;border-radius:0;grid-template-columns:1fr;display:block}.v-preview-media{padding:15px}.v-preview-full{height:46vh}.v-preview-info{padding:25px 20px 60px}.v-preview-close{top:10px;right:10px}.v-preview-cue{opacity:1!important}#shop .sf-pc .v-product-title{font-size:14px!important;margin:4px 9px!important}#shop .sf-pc .v-preview-link{margin:2px 9px 7px;font-size:10px}}
+</style><style id="v-ux-20261013">
+/* Keyboard focus that is visible on every control */
+#shop :is(a,button,select,input,[tabindex]):focus-visible,.v-preview-overlay :is(button):focus-visible{outline:2px solid #b0884f!important;outline-offset:3px}
+/* Closed cart drawer: no shadow bleeding onto the page, not reachable by Tab */
+.sf-cartpanel{visibility:hidden;transition:transform .26s ease,visibility 0s linear .26s!important}
+.sf-cartpanel.on{visibility:visible;transition:transform .26s ease,visibility 0s!important}
+/* Mobile category strip */
+.v-mobile-cats{display:none}
+@media(max-width:980px){
+ .v-mobile-cats{display:flex;gap:8px;overflow-x:auto;padding:10px 14px 12px;scrollbar-width:none;border-bottom:1px solid #ebe5d9;background:#faf8f2}
+ .v-mobile-cats::-webkit-scrollbar{display:none}
+ .v-mobile-cats a{flex:0 0 auto;padding:8px 16px;border:1px solid #e2dccf;border-radius:99px;background:#fff;color:#1d3128;font:600 13px var(--sans);cursor:pointer}
+ #shop .pro-icon{display:inline-grid!important;place-items:center}
+}
+/* Grid toolbar */
+.v-grid-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;color:#5f6d65;font:500 13px var(--sans)}
+.v-sort{display:flex;align-items:center;gap:8px}
+.v-sort select{appearance:none;border:1px solid #e2dccf;border-radius:99px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23173229' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 14px center;padding:9px 34px 9px 14px;font:600 13px var(--sans);color:#173229;cursor:pointer}
+#sfprods{scroll-margin-top:150px}
+#shop #sfprods{margin-top:14px!important}
+/* Stock badges */
+#shop .sf-pc .v-badge{position:absolute;top:12px;left:12px;z-index:1;background:#fff;color:#8a4b1f;border-radius:99px;padding:5px 11px;font:700 11px var(--sans);font-style:normal;letter-spacing:.02em;box-shadow:0 2px 8px #0002}
+#shop .sf-pc .v-badge-out{background:#1d2b25;color:#fff}
+#shop .sf-pc.v-sold-out img{filter:grayscale(.7);opacity:.75}
+/* Add-to-bag feedback */
+#shop .sf-pc .sf-btn.v-added{background:#2e6b51!important}
+#shop .sf-pc .sf-btn:disabled{background:#ece8e0!important;color:#4f5a54!important;opacity:1!important;cursor:not-allowed}
+#shop .sf-cart{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+@keyframes v-bump{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+#sfcart.v-bump{animation:v-bump .4s ease}
+/* Loading skeleton */
+.v-skel{border-radius:15px;overflow:hidden;background:#fff;border:1px solid #eae6df;padding-bottom:16px}
+.v-skel i,.v-skel b{display:block;background:linear-gradient(90deg,#efebe3 25%,#f7f4ee 50%,#efebe3 75%);background-size:200% 100%;animation:v-shimmer 1.2s infinite}
+.v-skel i{aspect-ratio:4/4.5}.v-skel b{height:12px;margin:14px 14px 0;border-radius:6px}.v-skel b+b{width:40%}
+@keyframes v-shimmer{to{background-position:-200% 0}}
+.v-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* Free-shipping progress */
+.v-ship{margin-bottom:16px}.v-ship p{margin:0 0 8px;font-size:13px;color:#43544b}.v-ship b{color:#173229}
+.v-ship-bar{height:6px;border-radius:99px;background:#ebe6dc;overflow:hidden}.v-ship-bar i{display:block;height:100%;background:linear-gradient(90deg,#c4a65f,#2e6b51);border-radius:99px;transition:width .3s}
+/* Perks + footer */
+#shop .sf-perks i{display:grid;place-items:center;width:34px;height:34px;margin-bottom:10px;border-radius:50%;background:#efe9dc;color:#7a5a2c;font-style:normal;font-size:15px}
+.v-footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px;margin-top:48px;padding:36px 0 0;border-top:1px solid #e5dfd4;color:#4d5d54;font-size:13px}
+.v-footer-brand b{display:block;font:italic 600 28px var(--serif);color:#10271e;margin-bottom:6px}
+.v-footer h4{margin:0 0 10px;font:700 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#a07a45}
+.v-footer-col a{display:block;padding:4px 0;color:#1d3128;cursor:pointer;text-decoration:none}.v-footer-col a:hover{color:#ad8052}
+.v-footer-copy{grid-column:1/-1;margin:8px 0 0;padding-top:18px;border-top:1px solid #ece7dd;color:#7b857f;font-size:12px}
+@media(max-width:620px){.v-footer{grid-template-columns:1fr 1fr}.v-footer-brand{grid-column:1/-1}.v-grid-bar{font-size:12px}.v-sort-l{display:none}}
+.v-grid-bar>span{min-width:0}.v-sort{white-space:nowrap;flex:none}
+#shop .live-empty-products .sf-btn{background:#0e3024;color:#fff;border-radius:99px;padding:12px 22px}
+/* Product preview: keep "Add to bag" in reach on phones */
+@media(max-width:760px){.v-preview-cart{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:2;box-shadow:0 10px 30px #0c332655}}
+@media(prefers-reduced-motion:reduce){#sfcart.v-bump,.v-skel i,.v-skel b{animation:none}}
 </style></head><body><main id="shop">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="sf-shirt" viewBox="0 0 80 80"><path d="M20 14 32 8Q40 18 48 8L60 14 72 30 62 36 58 30V72H22V30L18 36 8 30Z"/></symbol>
@@ -369,6 +421,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#f6f3ed;color:#15231d;overf
    <div class="sf-links pro-links"><a data-sf="Men">Men</a><a data-sf="Women">Women</a><a data-sf="Kids">Kids</a><a data-sf="Accessories">Accessories</a></div>
    <div class="pro-actions"><button class="pro-icon" id="storeSearchBtn" aria-label="Search">⌕</button><button class="pro-account" id="custAccount" type="button">Sign in</button><button class="sf-cart" id="sfcart">Bag <b id="sfcc">0</b></button></div>
   </div>
+  <nav class="v-mobile-cats" aria-label="Shop categories"><a data-sf="Men">Men</a><a data-sf="Women">Women</a><a data-sf="Kids">Kids</a><a data-sf="Accessories">Accessories</a></nav>
   <div class="pro-searchbar" id="proSearchbar"><input id="storeSearch" type="search" placeholder="Search shirts, dresses, kurta sets…" aria-label="Search products"><button id="storeSearchClose">×</button></div>
   <div class="sf-in">
    <div class="v-luxe-intro"><span>THE VASTRÉYA JOURNAL <i>✦</i> NEW SEASON 2026</span><span>Crafted for life's everyday moments and unforgettable occasions.</span></div>
@@ -403,14 +456,16 @@ html{scroll-behavior:smooth}body{margin:0;background:#f6f3ed;color:#15231d;overf
      <div class="sf-cat v-luxe-cat v-luxe-accessories" data-sf="Accessories" role="button" tabindex="0"><div class="v-luxe-cat-photo" aria-hidden="true"></div><div class="v-luxe-cat-text"><span>04 / COLLECTION</span><b>Accessories</b><small>The finishing touches</small><i aria-hidden="true">↗</i></div></div>
    </div>
    <div class="sf-sh"><div><span class="v-section-label">NEW IN THE SHOP</span><h3>The Vastréya edit</h3><p>Discover what is currently available in our collection.</p></div><div class="sf-tabs sf-chips" id="sfchips"><button class="on">All</button><button>Men</button><button>Women</button><button>Kids</button><button>Accessories</button></div></div>
+   <div class="v-grid-bar"><span id="vResultCount" aria-live="polite"></span><label class="v-sort"><span class="v-sort-l">Sort by</span><select id="vSort" aria-label="Sort products"><option value="featured">Newest</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></label></div>
    <div class="sf-prods" id="sfprods"></div>
-   <div class="sf-perks"><div>Fresh styles<span>From Vastréya</span></div><div>Real product listings<span>Managed by our team</span></div><div>Cash on Delivery<span>Pay when your order arrives</span></div><div>Your account<span>Track your orders</span></div></div>
+   <div class="sf-perks"><div><i aria-hidden="true">✦</i>Free shipping<span>On orders above ₹1,499</span></div><div><i aria-hidden="true">₹</i>Cash on Delivery<span>Pay when your order arrives</span></div><div><i aria-hidden="true">⌂</i>Saved addresses<span>Faster checkout next time</span></div><div><i aria-hidden="true">✓</i>Track your orders<span>Anytime from your account</span></div></div>
+   <footer class="v-footer"><div class="v-footer-brand"><b>Vastréya</b><span>Modern Indian dressing for everyday life and celebrations.</span></div><div class="v-footer-col"><h4>Shop</h4><a data-sf="Men">Men</a><a data-sf="Women">Women</a><a data-sf="Kids">Kids</a><a data-sf="Accessories">Accessories</a></div><div class="v-footer-col"><h4>Your account</h4><a data-v-orders>My orders</a><a data-cart="open">Your bag</a></div><p class="v-footer-copy">© <span id="vYear">2026</span> Vastréya · Indian Fashion</p></footer>
   </div></div>
  <div class="sf-cartback" id="sfcartback" aria-hidden="true"></div>
  <aside class="sf-cartpanel" id="sfcartpanel" aria-label="Shopping cart" aria-hidden="true">
   <div class="sf-carthead"><div><small style="color:var(--mut)">VASTRÉYA</small><h3>Your cart</h3></div><button class="sf-cartclose" id="sfcartclose" aria-label="Close cart">×</button></div>
   <div class="sf-cartbody" id="sfcartbody"></div>
-  <div class="sf-cartfoot"><div class="sf-total"><span>Subtotal</span><strong id="sfsubtotal">₹0</strong></div><button class="sf-checkout" id="sfcheckout" disabled>Proceed to checkout</button><p class="sf-cartnote">Taxes and shipping are calculated at checkout.</p></div>
+  <div class="sf-cartfoot"><div class="v-ship" id="vShip" hidden></div><div class="sf-total"><span>Subtotal</span><strong id="sfsubtotal">₹0</strong></div><button class="sf-checkout" id="sfcheckout" disabled>Proceed to checkout</button><p class="sf-cartnote">Taxes and shipping are calculated at checkout.</p></div>
  </aside>
  <div class="sf-checkoutback" id="sfcheckoutback" aria-hidden="true">
   <section class="sf-checkoutbox" id="sfcheckoutbox" role="dialog" aria-modal="true" aria-label="Checkout">
@@ -435,7 +490,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#f6f3ed;color:#15231d;overf
 </main>
 <div class="toast" id="toast"></div><script>
 (()=>{const q=s=>document.querySelector(s),T=m=>{const t=q('#toast');t.textContent=m;t.classList.add('on');clearTimeout(T.h);T.h=setTimeout(()=>t.classList.remove('on'),2000)},inr=n=>'₹'+new Intl.NumberFormat('en-IN').format(n);
-let P=[];let activeCategory='All';
+let P=[];let activeCategory='All',searchTerm='',sortBy='featured';const FREE_SHIP=1499;
 const htmlSafe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const catColors={Men:'--t1',Women:'--t2',Kids:'--t3',Accessories:'--t4'};
 const art=p=>p[9]?`<img src="${htmlSafe(p[9])}" alt="${htmlSafe(p[0])}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:`<span class="live-no-photo">Product photo coming soon</span>`;
@@ -447,26 +502,36 @@ const product=n=>P.find(x=>x[0]===n);
 const renderCart=()=>{const body=q('#sfcartbody'),entries=Object.entries(C).filter(([n,v])=>v>0&&product(n));q('#sfcc').textContent=count();let total=0;
  if(!entries.length)body.innerHTML='<div class="sf-empty"><div><b>Your cart is empty</b><span>Add a few Vastréya favourites to see them here.</span></div></div>';
  else body.innerHTML=entries.map(([n,qty])=>{const p=product(n),line=p[2]*qty;total+=line;return `<div class="sf-ci" data-item="${n}"><div class="sf-ci-pic" style="background:var(${p[5]})">${art(p)}</div><div><h4>${n}</h4><small>${p[1]} · ${inr(p[2])} each</small><div class="sf-ci-price">${inr(line)}</div><div class="sf-qty"><button data-cart-action="dec" aria-label="Decrease quantity">−</button><b>${qty}</b><button data-cart-action="inc" aria-label="Increase quantity">+</button></div></div><button class="sf-remove" data-cart-action="remove">Remove</button></div>`}).join('');
- q('#sfsubtotal').textContent=inr(total);q('#sfcheckout').disabled=!entries.length;save()};
+ q('#sfsubtotal').textContent=inr(total);q('#sfcheckout').disabled=!entries.length;
+ const ship=q('#vShip');if(ship){ship.hidden=!entries.length;const left=Math.max(0,FREE_SHIP-total);ship.innerHTML=`<p>${left?`Add <b>${inr(left)}</b> more for free shipping`:'<b>You’ve unlocked free shipping</b>'}</p><div class="v-ship-bar"><i style="width:${Math.min(100,total/FREE_SHIP*100)}%"></i></div>`}
+ save()};
 const openCart=()=>{renderCart();q('#sfcartback').classList.add('on');q('#sfcartpanel').classList.add('on');q('#sfcartback').setAttribute('aria-hidden','false');q('#sfcartpanel').setAttribute('aria-hidden','false');document.body.classList.add('sf-cart-open');setTimeout(()=>q('#sfcartclose').focus(),0)};
 const closeCart=()=>{q('#sfcartback').classList.remove('on');q('#sfcartpanel').classList.remove('on');q('#sfcartback').setAttribute('aria-hidden','true');q('#sfcartpanel').setAttribute('aria-hidden','true');document.body.classList.remove('sf-cart-open')};
 const add=n=>{const item=product(n);if(!item||!item[8])return T('This product is out of stock');if((C[n]||0)>=item[8])return T('Only '+item[8]+' in stock');C[n]=(C[n]||0)+1;renderCart();T(n+' added to bag')};
+const badge=x=>x[8]<=0?'<em class="v-badge v-badge-out">Sold out</em>':x[8]<=3?`<em class="v-badge">Only ${x[8]} left</em>`:'';
 const draw=f=>{
  activeCategory=f;
- const filtered=P.filter(x=>f==='All'||x[1]===f);
- q('#sfprods').innerHTML=filtered.length?filtered.map(x=>`<article class="sf-pc"><button type="button" class="sf-pi live-picture v-product-preview-trigger" data-preview="${htmlSafe(x[7])}" aria-label="View photos and details for ${htmlSafe(x[0])}" title="Click to preview ${htmlSafe(x[0])}" style="background:var(${x[5]})">${art(x)}<span class="v-preview-cue">⌕ &nbsp; Quick view</span></button><button type="button" class="v-product-title" data-preview="${htmlSafe(x[7])}">${htmlSafe(x[0])}</button><div class="sf-pm"><span><b>${inr(x[2])}</b></span><span>${htmlSafe(x[1])}</span></div><button type="button" class="v-preview-link" data-preview="${htmlSafe(x[7])}">View details & photos →</button><button class="sf-btn" data-n="${htmlSafe(x[0])}" ${x[8]<=0?'disabled':''}>${x[8]<=0?'Out of stock':'Add to bag'}</button></article>`).join(''):'<div class="live-empty-products"><h3>No products available yet</h3><p>New pieces will appear here as soon as they are published by Vastréya.</p></div>';
+ const term=searchTerm.toLowerCase();
+ const filtered=P.filter(x=>(f==='All'||x[1]===f)&&(!term||(x[0]+' '+x[1]+' '+x[11]).toLowerCase().includes(term)));
+ if(sortBy==='price-asc')filtered.sort((a,b)=>a[2]-b[2]);else if(sortBy==='price-desc')filtered.sort((a,b)=>b[2]-a[2]);
+ const rc=q('#vResultCount');if(rc)rc.textContent=P.length?filtered.length+(filtered.length===1?' piece':' pieces')+(term?` matching “${searchTerm}”`:''):'';
+ q('#sfprods').innerHTML=filtered.length?filtered.map(x=>`<article class="sf-pc${x[8]<=0?' v-sold-out':''}"><button type="button" class="sf-pi live-picture v-product-preview-trigger" data-preview="${htmlSafe(x[7])}" aria-label="View photos and details for ${htmlSafe(x[0])}" title="Click to preview ${htmlSafe(x[0])}" style="background:var(${x[5]})">${art(x)}${badge(x)}<span class="v-preview-cue">⌕ &nbsp; Quick view</span></button><button type="button" class="v-product-title" data-preview="${htmlSafe(x[7])}">${htmlSafe(x[0])}</button><div class="sf-pm"><span><b>${inr(x[2])}</b></span><span>${htmlSafe(x[1])}</span></div><button type="button" class="v-preview-link" data-preview="${htmlSafe(x[7])}">View details & photos →</button><button class="sf-btn" data-n="${htmlSafe(x[0])}" ${x[8]<=0?'disabled':''}>${x[8]<=0?'Out of stock':'Add to bag'}</button></article>`).join(''):P.length?`<div class="live-empty-products"><h3>Nothing matches yet</h3><p>${term?`We couldn’t find “${htmlSafe(searchTerm)}”${f!=='All'?' in '+htmlSafe(f):''}.`:'No pieces in '+htmlSafe(f)+' right now.'} Try another category or search.</p><button class="sf-btn" data-v-reset>Show all pieces</button></div>`:'<div class="live-empty-products"><h3>No products available yet</h3><p>New pieces will appear here as soon as they are published by Vastréya.</p></div>';
 };
+const setChip=f=>document.querySelectorAll('#sfchips button').forEach(x=>x.classList.toggle('on',x.textContent===f));
+window.vastreyaSearch=t=>{searchTerm=String(t||'').trim();draw(activeCategory)};
+const yr=q('#vYear');if(yr)yr.textContent=new Date().getFullYear();
+q('#vSort').onchange=e=>{sortBy=e.target.value;draw(activeCategory)};
 async function loadCatalog(){try{
  const r=await fetch('/api/catalog',{cache:'no-store'});const data=await r.json();if(!r.ok)throw Error(data.error||'Unable to load catalogue');
  P=(data.products||[]).map(x=>[x.name,x.category,Number(x.price_rupees),0,'shirt',catColors[x.category]||'--t4','',x.sku,Number(x.stock_units)||0,(x.images||[])[0]||'',Array.isArray(x.images)?x.images.filter(v=>typeof v==='string'&&/^https:\/\//.test(v)).slice(0,5):[],x.description||'']);
  for(const n of Object.keys(C)){if(!product(n))delete C[n]; else C[n]=Math.min(C[n],product(n)[8]);if(C[n]<=0)delete C[n]}
  save();draw(activeCategory);renderCart();
  }catch(e){q('#sfprods').innerHTML='<div class="live-empty-products"><h3>Products temporarily unavailable</h3><p>'+htmlSafe(e.message)+'</p><button class="sf-btn" id="retryCatalog">Retry</button></div>';q('#retryCatalog').onclick=loadCatalog;}}
-q('#sfprods').innerHTML='<div class="live-empty-products">Loading our collection…</div>';loadCatalog();
+q('#sfprods').innerHTML=Array.from({length:4},()=>'<div class="v-skel" aria-hidden="true"><i></i><b></b><b></b></div>').join('')+'<span class="v-sr">Loading our collection…</span>';loadCatalog();
 setInterval(()=>{if(!document.hidden)loadCatalog()},60000);
 renderCart();
 q('#sfchips').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#sfchips button').forEach(x=>x.classList.toggle('on',x===b));draw(b.textContent)};
-q('#sfprods').onclick=e=>{const b=e.target.closest('.sf-btn[data-n]');if(b&&!b.disabled){add(b.dataset.n);return}const preview=e.target.closest('[data-preview]');if(preview)openProductPreview(preview.dataset.preview)};
+q('#sfprods').onclick=e=>{if(e.target.closest('[data-v-reset]')){searchTerm='';const si=q('#storeSearch');if(si)si.value='';setChip('All');draw('All');return}const b=e.target.closest('.sf-btn[data-n]');if(b&&!b.disabled){const before=C[b.dataset.n]||0;add(b.dataset.n);if((C[b.dataset.n]||0)>before){b.classList.add('v-added');b.textContent='Added ✓';const bag=q('#sfcart');bag.classList.remove('v-bump');void bag.offsetWidth;bag.classList.add('v-bump');setTimeout(()=>{b.classList.remove('v-added');b.textContent='Add to bag'},1400)}return}const preview=e.target.closest('[data-preview]');if(preview)openProductPreview(preview.dataset.preview)};
 let previewSku='',previewPhoto=0,previewLastFocus=null;
 const previewImages=p=>Array.isArray(p?.[10])?p[10]:[];
 function openProductPreview(sku){const p=P.find(x=>x[7]===sku);if(!p)return;previewSku=sku;previewPhoto=0;previewLastFocus=document.activeElement;
@@ -566,8 +631,10 @@ $('#emailAuth')?.addEventListener('submit',async e=>{e.preventDefault();if(!sb)r
 $('#phoneAuth')?.addEventListener('submit',async e=>{e.preventDefault();if(!sb)return status('Supabase project connection is still being finalized.','err');let phone=$('#authPhone').value.replace(/[\s()-]/g,'');if(/^\d{10}$/.test(phone))phone='+91'+phone;const password=$('#authPhonePassword').value;status('Signing in…');let r=await sb.auth.signInWithPassword({phone,password});if(r.error){r=await sb.auth.signUp({phone,password});if(r.error)return status(r.error.message,'err');return status(r.data.session?'Account created and signed in.':'A verification step may be required for this mobile number.','ok')}status('Signed in.','ok')});
 // Protect checkout: customers may browse/cart anonymously, but must sign in before beginning checkout.
 document.addEventListener('click',e=>{const btn=e.target.closest('#sfcheckout,[data-cart="checkout"]');if(btn&&!currentUser){e.preventDefault();e.stopImmediatePropagation();openAcct();status('Please sign in before checkout. Your bag is saved.');}},true);
-$('#storeSearchBtn')?.addEventListener('click',()=>{$('#proSearchbar')?.classList.toggle('on');setTimeout(()=>$('#storeSearch')?.focus(),0)});$('#storeSearchClose')?.addEventListener('click',()=>$('#proSearchbar')?.classList.remove('on'));
-$('#storeSearch')?.addEventListener('input',e=>{const term=e.target.value.trim().toLowerCase();document.querySelectorAll('.sf-pc').forEach(card=>{card.style.display=!term||card.textContent.toLowerCase().includes(term)?'flex':'none'})});
+$('#storeSearchBtn')?.addEventListener('click',()=>{$('#proSearchbar')?.classList.toggle('on');setTimeout(()=>$('#storeSearch')?.focus(),0)});$('#storeSearchClose')?.addEventListener('click',()=>{$('#proSearchbar')?.classList.remove('on');const si=$('#storeSearch');if(si&&si.value){si.value='';window.vastreyaSearch?.('')}});
+document.addEventListener('click',e=>{if(e.target.closest('[data-v-orders]'))window.vastreyaShowOrders?.()});
+$('#storeSearch')?.addEventListener('input',e=>window.vastreyaSearch?.(e.target.value));
+$('#storeSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.querySelector('#sfprods')?.scrollIntoView({behavior:'smooth',block:'start'})}if(e.key==='Escape'){e.target.value='';window.vastreyaSearch?.('');$('#proSearchbar')?.classList.remove('on');$('#storeSearchBtn')?.focus()}});
 window.vastreyaShowOrders=async()=>{if(!currentUser){openAcct();return}let panel=document.querySelector('#vMyOrders');if(!panel){panel=document.createElement('div');panel.id='vMyOrders';panel.className='orders-overlay';panel.innerHTML='<div class="orders-panel"><header><div><small>VASTRÉYA ACCOUNT</small><h2>My orders</h2><p>Track your orders</p></div><button id="vMyOrdersClose" aria-label="Close">×</button></header><div id="vMyOrdersList">Loading…</div></div>';document.body.append(panel);panel.addEventListener('click',e=>{if(e.target===panel||e.target.closest('#vMyOrdersClose'))panel.classList.remove('on')})}panel.classList.add('on');const list=panel.querySelector('#vMyOrdersList');list.textContent='Loading orders…';try{const token=await window.vastreyaGetToken();const r=await fetch('/api/orders',{headers:{Authorization:'Bearer '+token}});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not load orders');window.vastreyaCustomerOrders=d.orders||[];window.vastreyaCustomerReturns=d.returns||[];const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));list.innerHTML=d.orders.length?d.orders.map(o=>`<article class="order-tile"><div class="order-line"><b>${esc(o.order_number)}</b><span>${esc(o.status)}</span></div><p>${new Date(o.created_at).toLocaleDateString('en-IN')} · ₹${Number(o.total_rupees).toLocaleString('en-IN')} · ${esc(o.payment_method)}</p><div>${(o.items||[]).map(i=>`<div class="order-line small"><span>${esc(i.name)} × ${i.quantity}</span><b>₹${Number(i.line_total_rupees).toLocaleString('en-IN')}</b></div>`).join('')}</div><small>${o.demo_order?'Historical test order — not for dispatch':'Payment due on delivery'}</small>${(d.returns||[]).filter(rr=>rr.order_id===o.id).map(rr=>`<div class="v-return-history"><b>${esc(rr.id)}</b> · ${esc(rr.product_name)} — ${esc(rr.status)}${rr.refund_status==='refunded'?' · Refund recorded':''}</div>`).join('')}${!o.demo_order&&o.status==='delivered'?`<div class="order-action-row"><button type="button" class="v-return-request" data-vreturn="${esc(o.id)}">Request a return</button></div>`:''}${['pending','confirmed'].includes(o.status)?`<div class="order-action-row"><button class="order-cancel-btn" data-vcancel="${esc(o.id)}" data-vnumber="${esc(o.order_number)}">Cancel order</button></div>`:''}</article>`).join(''):'<p>No orders yet. Add something to your bag to begin.</p>'}catch(err){list.textContent=err.message||'Could not load orders'}};
 initAuth();
 </script><style>.order-action-row{margin-top:14px;display:flex;justify-content:flex-end}.order-cancel-btn{background:transparent;border:1px solid #c06d5e;color:#a54234;border-radius:9px;padding:9px 14px;font:600 12px Inter,system-ui;cursor:pointer}.order-cancel-btn:hover{background:#fff0eb}.order-cancel-btn:disabled{opacity:.5;cursor:wait}</style>
